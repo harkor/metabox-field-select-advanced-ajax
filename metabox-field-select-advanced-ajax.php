@@ -24,7 +24,7 @@ class MetaBoxFieldSelectAdvancedAjax {
       return;
     endif;
 
-    wp_enqueue_script('metabox-select-advancec-ajax-field', plugin_dir_url(__FILE__) . '/select-advanced-ajax-field.js');
+    wp_enqueue_script('metabox-select-advancec-ajax-field', plugin_dir_url(__FILE__) . '/js/select-advanced-ajax-field.js');
 
   }
 
