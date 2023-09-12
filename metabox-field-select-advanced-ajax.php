@@ -2,32 +2,29 @@
 /*
 Plugin Name:        Meta Box field - Select Advanced Ajax
 Description:        Meta Box plugin compatible with ajax and select-advanced field
-Version:            1.0
+Version:            1.1
 Author:             Harkor (Charlin)
 Author URI:         https://www.charlin.be/
 */
 
-class MetaBoxFieldSelectAdvancedAjax {
+if ( ! class_exists( 'MetaBoxFieldSelectAdvancedAjax' ) ) {
+  class MetaBoxFieldSelectAdvancedAjax {
+  
+    public function __construct() {
+      add_action( 'rwmb_enqueue_scripts', array( $this, 'enqueue' ) );
+      add_action( 'init', array( $this, 'prefix_load_SelectAdvancedAjax_type' ));
+    }
+  
+    public function prefix_load_SelectAdvancedAjax_type(){
+      require 'RWMB_Select_advanced_ajax_Field.php';
+    }
 
-  function __construct(){
-    add_action('init', array(&$this, 'prefix_load_SelectAdvancedAjax_type'));
-    add_action('admin_enqueue_scripts', array(&$this, 'my_enqueue'));
+    public function enqueue() {
+      list( , $url ) = RWMB_Loader::get_path( dirname( __FILE__ ) );
+      wp_enqueue_script( 'field-select-ajax', $url . 'js/select-advanced-ajax-field.js', array( 'jquery' ), '1.1', true );
+    }
+  
   }
-
-  public function prefix_load_SelectAdvancedAjax_type(){
-    require 'RWMB_Select_advanced_ajax_Field.php';
-  }
-
-  public function my_enqueue($hook){
-
-    if('post.php' !== $hook):
-      return;
-    endif;
-
-    wp_enqueue_script('metabox-select-advancec-ajax-field', plugin_dir_url(__FILE__) . '/js/select-advanced-ajax-field.js');
-
-  }
-
+  
+  new MetaBoxFieldSelectAdvancedAjax;
 }
-
-new MetaBoxFieldSelectAdvancedAjax;
