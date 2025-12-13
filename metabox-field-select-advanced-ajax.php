@@ -21,7 +21,7 @@ if ( ! class_exists( 'MetaBoxFieldSelectAdvancedAjax' ) ) {
 
     public function enqueue() {
       list( , $url ) = RWMB_Loader::get_path( dirname( __FILE__ ) );
-      wp_enqueue_script( 'field-select-ajax', $url . 'js/select-advanced-ajax-field.js', array( 'jquery' ), '1.1', true );
+      wp_enqueue_script( 'field-select-ajax', $url . 'js/select-advanced-ajax-field.js', array( 'jquery' ), '1.2', true );
     }
   
   }
