@@ -2,7 +2,7 @@
 /*
 Plugin Name:        Meta Box field - Select Advanced Ajax
 Description:        Meta Box plugin compatible with ajax and select-advanced field
-Version:            1.1
+Version:            1.2
 Author:             Harkor (Charlin)
 Author URI:         https://www.charlin.be/
 */
@@ -21,7 +21,7 @@ if ( ! class_exists( 'MetaBoxFieldSelectAdvancedAjax' ) ) {
 
     public function enqueue() {
       list( , $url ) = RWMB_Loader::get_path( dirname( __FILE__ ) );
-      wp_enqueue_script( 'field-select-ajax', $url . 'js/select-advanced-ajax-field.js', array( 'jquery' ), '1.1', true );
+      wp_enqueue_script( 'field-select-ajax', $url . 'js/select-advanced-ajax-field.js', array( 'jquery' ), '1.2', true );
     }
   
   }
